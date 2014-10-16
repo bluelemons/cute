@@ -1,3 +1,15 @@
 #!/usr/bin/env ruby
 
+require 'optparse'
 require_relative '../lib/cute'
+
+settings = {}
+OptionParser.new do |options|
+  options.banner = "Usage: #{ File.basename $0 } [options]"
+
+  options.on("-v", "--[no-]verbose", "Run verbosely") do |v|
+    settings[:verbose] = v
+  end
+end.parse!
+
+Cute.run ARGV, settings
