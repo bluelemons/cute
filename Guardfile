@@ -1,0 +1,1 @@
+watch(/.*/) { puts "", `rake` }
